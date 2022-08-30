@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery UI</title>
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <style>
+      #dialog-link {
+        padding: .4em 1em .4em 20px;
+        text-decoration: none;
+        position: relative;
+      }
+      #dialog-link span.ui-icon {
+        margin: 0 5px 0 0;
+        position: absolute;
+        left: .2em;
+        top: 50%;
+        margin-top: -8px;
+      }
+      #icons span.ui-icon {
+        float: left;
+        margin: 0 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery UI</h1>
+    <h2>Autocomplete</h2>
+    <div>
+      <input id="autocomplete" title="type &quot;a&quot;">
+    </div>
+    <h2>Dialog</h2>
+    <p>
+      <a href="#" id="dialog-link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-info"></span>Info</a>
+    </p>
+    <div id="dialog" title="Do you need information?">
+      <p>Press "Yes" to get information, "No"/X/Escape to close the dialog.</p>
+    </div>
+    <h2>Menu</h2>
+    <ul style="width:100px;" id="menu">
+      <li>Meat</li>
+      <li>Vegetable</li>
+      <li>Fruit
+        <ul>
+          <li>Strawberry</li>
+          <li>Orange</li>
+          <li>Apple</li>
+          <li>Banana</li>
+          <li>Peach</li>
+        </ul>
+      </li>
+      <li>Dairy</li>
+      <li>Breads</li>
+    </ul>
+    <h2>Tooltip</h2>
+    <p id="tooltip">
+      <span title="First Tooltip">Hover over me</span> to 
+      see the a tooltip and <span title="Second Tooltip">also over me</span>.
+    </p>
+    <h2>Highlight/Error</h2>
+    <p class="ui-state-highlight ui-corner-all">
+      <strong class="ui-icon ui-icon-check"></strong> This is highlighed!
+    </p>
+    <p class="ui-state-disabled ui-corner-all">
+      <strong class="ui-icon ui-icon-disabled"></strong> This is disabled!
+    </p>
+    <p class="ui-state-error ui-corner-all">
+      <b class="ui-icon ui-icon-alert"></b> This is an error!
+    </p>
+    <div id="accordion">
+        <h3>Section 1</h3>
+        <div>
+          <p>
+          Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+          ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+          amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+          odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+          </p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+          <p>
+          Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+          purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+          velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+          suscipit faucibus urna.
+          </p>
+        </div>
+        <h3>Section 3</h3>
+        <div>
+          <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam accusamus quo voluptatum unde, est odio nihil necessitatibus ipsum quia fugit, aliquid reiciendis fuga ducimus. Eos in modi quo ullam temporibus!
+          </p>
+          <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+          </ul>
+        </div>
+      </div>
+      
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+        ];
+        $( "#autocomplete" ).autocomplete({
+          source: availableTags
+        });
+        $( "#dialog" ).dialog({
+          autoOpen: false,
+          width: 400,
+          buttons: [
+            {
+              text: "Yes",
+              click: function() {
+                $( this ).dialog( "close" );
+                alert('Do stuff for Yes answer!');
+              }
+            },
+            {
+              text: "No",
+              click: function() {
+                $( this ).dialog( "close" );
+                alert('Do stuff for No answer!');
+              }
+            },
+            {
+              text: "Huh?",
+              click: function() {
+                $( this ).dialog( "close" );
+                alert('Don\'t know what your problem is!!!');
+              }
+            }
+          ]
+        });
+        $( "#dialog-link" ).click(function( event ) {
+          $( "#dialog" ).dialog( "open" );
+          event.preventDefault();
+        });
+        $( "#menu" ).menu();
+        $( "#tooltip" ).tooltip();
+        $( "#accordion" ).accordion();
+      });
+    </script>
+  </body>
+</html>

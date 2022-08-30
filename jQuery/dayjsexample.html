@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day JS Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isBetween.js"></script>
+</head>
+<body>
+    <h1>Day JS Example</h1>
+    <script>
+        dayjs.extend(window.dayjs_plugin_isBetween)
+        var currentDate = dayjs();
+        document.write(currentDate.format());
+        document.write('<br>');
+        document.write(currentDate.format('dddd MMMM D, YYYY @ H:mm:ss'));
+        document.write('<br>');
+        
+        var halloween = dayjs(currentDate.year() + '-10-31');
+        document.write(halloween.format('dddd MMMM D, YYYY'));
+        document.write('<br>');
+        
+        var christmas = dayjs(currentDate.year() + '-12-25');
+        document.write(christmas.format('dddd MMMM D, YYYY'));
+        document.write('<br>');
+        
+        var dayOfMonth = prompt('Enter day of the month 1-31');
+        var month = prompt('Enter the month 1-12');
+        var enteredDate = dayjs(currentDate.year() + '-' + month + '-' + dayOfMonth);
+        document.write(enteredDate.format('dddd MMMM D, YYYY @ H:mm:ss'));
+        document.write('<br>');
+        
+        if (enteredDate.isBefore(currentDate,'day')) {
+            document.write(enteredDate.format('dddd MMMM D, YYYY'));
+            document.write(' is before ')
+            document.write(currentDate.format('dddd MMMM D, YYYY'));
+        } else if (enteredDate.isAfter(currentDate,'day')) {
+            document.write(enteredDate.format('dddd MMMM D, YYYY'));
+            document.write(' is after ')
+            document.write(currentDate.format('dddd MMMM D, YYYY'));
+        } else {
+            document.write(enteredDate.format('dddd MMMM D, YYYY'));
+            document.write(' is equal ')
+            document.write(currentDate.format('dddd MMMM D, YYYY'));
+        }
+        document.write('<br>');
+        
+        document.write(enteredDate.format('dddd MMMM D, YYYY'));
+        if (enteredDate.isBetween(halloween,christmas,null,'[]')) {
+            document.write(' is between ');
+        } else {
+            document.write(' is not between ');
+        }
+        document.write(halloween.format('dddd MMMM D, YYYY'));
+        document.write(' and ')
+        document.write(christmas.format('dddd MMMM D, YYYY'));
+    </script>
+</body>
+</html>

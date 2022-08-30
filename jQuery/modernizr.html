@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernizr Feature Detection</title>
+</head>
+<body>
+    <h1>Modernizr Feature Detection</h1>
+    <script src="js/modernizr-custom (1).js"></script>
+    <script>
+        var hasFeature = '';
+        if (Modernizr.flexbox) {
+            hasFeature += 'Has flexbox';
+        } else {
+            hasFeature += 'Has NO flexbox';
+        }
+        hasFeature += '<br>';
+        if (Modernizr.touchevents) {
+            hasFeature += 'Has touchevents';
+        } else {
+            hasFeature += 'Has NO touchvents';
+        }
+        hasFeature += '<br>';
+        if (Modernizr.pointerlock) {
+            hasFeature += 'Has pointer lock';
+        } else {
+            hasFeature += 'Has NO pointer lock';
+        }
+        hasFeature += '<br>';
+        document.write(hasFeature);
+    </script>
+</body>
+</html>
